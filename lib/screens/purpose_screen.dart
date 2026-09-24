@@ -60,7 +60,7 @@ class PurposeScreen extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               'Your QR will only reveal the minimum data required for this service.',
-              style: TextStyle(color: Colors.white.withOpacity(0.7)),
+              style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
             ),
             const SizedBox(height: 24),
             Expanded(
@@ -80,7 +80,7 @@ class PurposeScreen extends StatelessWidget {
                       leading: Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: purpose['color'].withOpacity(0.2),
+                          color: purpose['color'].withValues(alpha: 0.2),
                           shape: BoxShape.circle,
                         ),
                         child: Icon(purpose['icon'], color: purpose['color']),

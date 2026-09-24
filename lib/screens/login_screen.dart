@@ -43,10 +43,6 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     try {
       authenticated = await auth.authenticate(
         localizedReason: 'Unlock Privacy QR Wallet',
-        options: const AuthenticationOptions(
-          stickyAuth: true,
-          biometricOnly: false,
-        ),
       );
     } catch (e) {
       debugPrint("Authentication error: $e");
@@ -78,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
               height: 300,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
               ),
             ),
           ),
@@ -90,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
               height: 400,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
+                color: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.2),
               ),
             ),
           ),
@@ -131,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                       ),
                     ),
                     const SizedBox(height: 64),
@@ -145,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                           borderRadius: BorderRadius.circular(16),
                         ),
                         elevation: 8,
-                        shadowColor: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                        shadowColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
                       ),
                       child: _isAuthenticating
                           ? const CircularProgressIndicator(color: Colors.black)

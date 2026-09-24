@@ -91,7 +91,7 @@ class _QRDisplayScreenState extends State<QRDisplayScreen> {
                   const SizedBox(height: 16),
                   const Text('QR Code Expired', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 8),
-                  Text('Dynamic credentials expire after 60s.', style: TextStyle(color: Colors.white.withOpacity(0.7))),
+                  Text('Dynamic credentials expire after 60s.', style: TextStyle(color: Colors.white.withValues(alpha: 0.7))),
                   const SizedBox(height: 32),
                   ElevatedButton.icon(
                     icon: const Icon(Icons.refresh_rounded),
@@ -122,7 +122,7 @@ class _QRDisplayScreenState extends State<QRDisplayScreen> {
                       borderRadius: BorderRadius.circular(24),
                       boxShadow: [
                         BoxShadow(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                          color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
                           blurRadius: 20,
                           spreadRadius: 5,
                         ),
