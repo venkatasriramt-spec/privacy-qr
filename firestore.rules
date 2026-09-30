@@ -1,0 +1,57 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Check if the request is from an authenticated user
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Get the role of the user making the request
+    function getUserRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    // ==========================================
+    // 1. USERS COLLECTION (Profiles & Roles)
+    // ==========================================
+    match /users/{userId} {
+      // Users can read their own data. Admins and Security can read all user data (for verification).
+      allow read: if isAuthenticated() && (request.auth.uid == userId || getUserRole() in ['admin', 'security', 'faculty']);
+      
+      // Allow users to create their initial profile, but restrict the roles they can claim.
+      // (In a real production app, role assignment should be done via a secure Cloud Function, not directly by the client).
+      allow create: if isAuthenticated() 
+                    && request.auth.uid == userId 
+                    && request.resource.data.role in ['student', 'security', 'faculty'];
+                    
+      // Users can update non-sensitive info, but cannot escalate their own role.
+      allow update: if isAuthenticated() 
+                    && request.auth.uid == userId
+                    && request.resource.data.role == resource.data.role; 
+    }
+
+    // ==========================================
+    // 2. AUDIT LOGS (Scan History)
+    // ==========================================
+    match /scans/{scanId} {
+      // Only authorized personnel can create scan records
+      allow create: if isAuthenticated() && getUserRole() in ['security', 'faculty', 'admin'];
+      
+      // Students can view their own scan history. Security/Admin can view all.
+      allow read: if isAuthenticated() && (request.auth.uid == resource.data.studentId || getUserRole() in ['security', 'faculty', 'admin']);
+    }
+    
+    // ==========================================
+    // 3. SECURE QR TOKENS (For stateful verification)
+    // ==========================================
+    match /tokens/{tokenId} {
+       // Students write a token when they generate it
+       allow create: if isAuthenticated() && getUserRole() == 'student' && request.resource.data.studentId == request.auth.uid;
+       
+       // Security can read and update the token to 'consumed' to prevent replay attacks
+       allow read, update: if isAuthenticated() && getUserRole() in ['security', 'admin', 'faculty'];
+    }
+  }
+}
