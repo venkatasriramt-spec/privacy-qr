@@ -45,7 +45,6 @@ To run the app on an Android Emulator:
 
 **Terminal 2** — Run the app:
 ```powershell
-cd "C:\Users\VenkataSriram\Desktop\Crytography Project\privacy_qr"
 flutter run
 ```
 
