@@ -1,17 +1,23 @@
-# privacy_qr
+# Privacy QR
 
-A new Flutter project.
+A privacy-preserving mobile wallet application that generates single-use, service-bound, cryptographic QR credentials for students. 
+
+## Features
+- **Local Authentication**: Unlocks the credential wallet using native Biometrics (Face ID/Fingerprint) or PIN.
+- **Dynamic Privacy QR**: Generates short-lived (60s), single-use QR codes.
+- **Selective Disclosure**: Reveals only the minimum data required based on the service context (Library, Lab, Gate, etc.).
+- **Firebase Backend (Upcoming)**: Token verification, single-use consumption, and audit logging.
+
+## Tech Stack
+- **Frontend**: Flutter (Dart)
+- **Authentication**: `local_auth` for Biometrics
+- **Cryptography**: `crypto` (HMAC-SHA256), `uuid`
+- **QR Generation**: `qr_flutter`
 
 ## Getting Started
+To run the app on an Android Emulator:
+```bash
+flutter run
+```
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For a detailed log of development phases, bugs, and architecture decisions, see [project_history.md](project_history.md).
