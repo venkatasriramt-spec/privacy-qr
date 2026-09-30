@@ -18,3 +18,11 @@ This document records the chronological development of Privacy QR, including all
   - Fix: Updated `android/app/src/main/kotlin/com/example/privacy_qr/MainActivity.kt`.
 - **Feature**: Added `USE_BIOMETRIC`, `USE_FINGERPRINT`, and `CAMERA` permissions to `android/app/src/main/AndroidManifest.xml`.
 - **Bug Fix**: Updated deprecated `.withOpacity()` to `.withValues(alpha: ...)` across all Dart screens.
+
+### 2026-10-01 — Firebase Security & Cloud Authentication
+- **Feature**: Initialized Firebase project (`privacy-qr-b9813`) and linked Android app with `google-services.json`.
+- **Feature**: Deployed `firestore.rules` enabling strict Role-Based Access Control (RBAC). Rules enforce that only authenticated users can access their profiles, and only Security/Admins can update scan records or consume QR tokens.
+- **Feature**: Created `cloud_login_screen.dart` with Firebase Authentication (Email/Password) and integrated a Demo mode for instant Student/Security role assignment.
+- **Feature**: Rewrote `main.dart` to include an `AuthWrapper` and `RoleRouterScreen`, enforcing cloud authentication first before redirecting to `LoginScreen` (Local Biometrics) for students, or `ScannerScreen` for security personnel.
+- **Feature**: Built `scanner_screen.dart` using `mobile_scanner`. It parses the QR JSON, cryptographically verifies the HMAC-SHA256 signature, validates expiration timestamps, checks Firestore to prevent Replay Attacks (nonce check), and logs the scan to the database.
+- **Cleanup**: Executed `git filter-branch` to completely scrub unused platform directories (`windows`, `linux`, `macos`, `web`) from the Git history to reduce repository bloat.
