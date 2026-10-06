@@ -56,7 +56,6 @@ class DefaultFirebaseOptions {
     projectId: 'privacy-qr-b9813',
     storageBucket: 'privacy-qr-b9813.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBImbjmUi-lh7cZH2gde6C3ajk3DX44Gag',
     appId: '1:922866681775:ios:f1e8505365b9760c57515a',
