@@ -7,10 +7,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'screens/login_screen.dart'; // Local Auth (Biometrics)
 import 'screens/cloud_login_screen.dart'; // Email/Password
 import 'screens/scanner_screen.dart'; // Security Scanner
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const PrivacyQRApp());
 }
 
