@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "922866681775",
+    "project_id": "privacy-qr-b9813",
+    "storage_bucket": "privacy-qr-b9813.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922866681775:android:6cc4e90297cbb15257515a",
+        "android_client_info": {
+          "package_name": "com.example.privacy_qr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "922866681775-t3q481ukkfcoth23rq6e1sa6q33qi3l5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-7oT7-E87nfODuDfM5dDmRb0xCwh_EeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "922866681775-t3q481ukkfcoth23rq6e1sa6q33qi3l5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "922866681775-r0oe6g8tek7tmk4cnqisv7mvqreb0doe.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.privacyQr"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

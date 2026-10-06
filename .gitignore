@@ -47,8 +47,6 @@ app.*.map.json
 .widget_preview/
 
 # ===== Firebase Secrets (NEVER commit these) =====
-android/app/google-services.json
-ios/Runner/GoogleService-Info.plist
 
 # ===== Utility Scripts (one-off) =====
 *.ps1
